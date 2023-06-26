@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-</head>
-<body>
-<header>
-    <h1>Laravel</h1>
-    <a href="{{ route('login') }}">Login</a>
-    <a href="{{ route('register') }}">Register</a>
-</header>
+@extends('layout.common')
+
+@section('title','Register')
+@include('layout.header')
 <main>
     <h2>Register</h2>
     <form method="POST" action="{{ route('register') }}">
