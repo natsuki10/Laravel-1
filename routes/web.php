@@ -18,8 +18,14 @@ Route::get('/', function () {
 });
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
+
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::post('/register', [LoginController::class, 'store'])->name('register.store');
 
-Route::get('/register',[LoginController::class, 'register'])->name('register');
+Route::get('/home',[HomeController::class, 'index'])->name('home');
+
+Route::get('/logout',[LogoutController::class, 'logout'])->name('logout');
