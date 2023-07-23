@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -10,36 +11,25 @@ class LoginController extends Controller
     {
         return view('login');
     }
-
-    public function register(Request $request)
+    public function create()
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:7|confirmed',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-        return view('home');
+        return view('register');
     }
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:7|confirmed',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-        $user = $request->session()->get('user');
-        $request->session()->put('user', $user);
-        return view('home');
+        $user = new User(); 
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $request->session()->put('user', $user->name);
+        return redirect()->route('home');
     }
 }
-
+class LogoutController extends Controller
+{
+    public function logout(Request $request)
+    {
+        //
+    }
+}
 
 

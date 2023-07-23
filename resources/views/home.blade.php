@@ -3,7 +3,7 @@
 @section('content')
 <header>
     <h1>Laravel</h1>
-    <p>{{ $user }}</p>
+    <p>{{ $user }}さん</p>
     <a href="{{ route('logout') }}">Logout</a>
 </header>
 <main>
